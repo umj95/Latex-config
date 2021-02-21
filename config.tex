@@ -1,0 +1,191 @@
+% Custom Commands:
+% Use \maketitle to print the title info on the first text page
+% Use \maketitlepage to print a dedicated title page
+% Use \plagiat to print a Plagiatserklärung on its own page
+% After \tableofcontents a page break always follows
+% Use \workscited to print the works cited page (new page)
+
+%%%%%%%%%%%%%%%%%%%
+%%%%%Variables%%%%%
+%%%%%%%%%%%%%%%%%%%
+    % Personal Info
+    \author{Janosch Umbreit} %Name
+    \newcommand{\authormail}{} %Email
+    \newcommand{\matrikelnr}{} %Matrikelnummer
+    \newcommand{\authoraddress}{} %Addresse
+    
+    % Department & Correction Info
+    \newcommand{\city}{} %Stadt (Für Plagiatserkl.)
+    \newcommand{\university}{} %Uni
+    \newcommand{\faculty}{} %Fakultät
+    \newcommand{\department}{} %Institut
+    \newcommand{\handindate}{} %Abgabedatum
+    
+    \newcommand{\tutor}{} %Betreuer*in
+    %Use \maketitle for regular title and \maketitlepage for full title page
+    \newcommand{\coursetype}{} %Kursart
+    \newcommand{\coursetitle}{} %Name des Kurses
+    \newcommand{\coursenumber}{} %Kursnummer
+    
+    % Paper Info
+    \title{
+        Religious Reform, Princely Patronage, and Josquin's \emph{Miserere mei, Deus}} %Titel der Arbeit
+    \date{}
+    \newcommand{\papertype}{} %Art der Arbeit
+    \newcommand{\keywords}{} %Schlagwörter
+    
+    % input encoding & language
+    %\newcommand{\mainlanguage}{ngerman} %Uncomment if main language is German
+    \newcommand{\mainlanguage}{UKenglish} 
+    \usepackage[ngerman, \mainlanguage]{babel}
+%
+% Literature & Bibliography Resources
+%
+\usepackage[babel]{csquotes}
+
+\usepackage[style=mla,backend=biber]{biblatex}
+    \addbibresource{sources.bib} %.bib-file für Literatur
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Create Titlepage, Plagiatserklärung etc.
+%
+%%%%%%%%%%%Full Page Title%%%%%%%%%%%%%%%%%%%%
+\makeatletter
+    \newcommand{\maketitlepage}{
+        \phantomsection
+        \pdfbookmark[0]{Cover}{Cover}
+        \label{Deckblatt}
+        \thispagestyle{empty}
+        \begin{titlepage}
+        
+        %Seite zentrieren
+        %\begin{adjustwidth}{-2cm}{}
+        \renewcommand{\thepage}{}
+        
+        \begin{center}
+            \selectlanguage{ngerman}
+            
+            \ifdefined\university
+                \large{\university\\}
+            \else
+                \\ \fi
+             
+            \ifdefined\faculty
+                \large{\faculty\\}
+            \else
+                \\ \fi
+            
+            \ifdefined\department
+                \large{\department\\}
+            \else
+                \\ \fi
+            
+            \vspace*{6em}
+            
+            \foreignlanguage{UKenglish}{
+                \Huge{\textsc{\@title}}
+            }
+            
+            \vspace*{3em}
+            
+            \ifdefined\papertype
+                \Large{\papertype\\ \vspace{2em}}
+            \else
+                \\ \fi
+            
+            \ifdefined\tutor
+                \huge{\tutor\\ \vspace*{1.5em}}
+            \else
+                \\ \fi
+            
+            \ifdefined\handindate
+                \large{Abgabedatum: \handindate\\}
+            \else
+                \large{\today\\} \fi
+            
+            %\includegraphics[width=0.35\textwidth]{Unisiegel.png}}
+            
+        \end{center}
+        \vfill
+        
+        \begin{flushleft}
+        \@author\\
+        \ifdefined\authormail
+            \href{mailto:\authormail}{\authormail}\\
+        \else \\ \fi
+        \ifdefined\matrikelnr
+            {Matrikelnummer: \matrikelnr\\}
+        \else \\ \fi
+        \ifdefined\authoraddress
+            \authoraddress\\
+        \else \\ \fi
+        \end{flushleft}
+        
+        %\end{adjustwidth}
+        \selectlanguage{\mainlanguage}
+        \end{titlepage}
+        
+        \newpage
+    }
+\makeatother
+
+%%%%%%%%%%%%%%%%%%Simple Title%%%%%%%%%%%%%%%%%%
+\makeatletter         
+    \renewcommand\maketitle{
+        \selectlanguage{ngerman}
+        \begin{flushleft}
+            \@author\\
+            \coursetype~\emph{\coursetitle}\\
+            Kursnummer: \coursenumber\\
+            \tutor\\
+            \handindate
+        \end{flushleft}
+        
+        \begin{center}
+            \vspace{2em}
+            \textsc{\huge{\@title}}\\[4ex]
+        \end{center}
+        \selectlanguage{\mainlanguage}
+    } % Note the extra }
+\makeatother
+
+%%%%%%%%%%%%%%%Table of Contents%%%%%%%%%%%%%%%%%
+\let\tableofcontentsORIG\tableofcontents
+\renewcommand\tableofcontents{\thispagestyle{empty}\tableofcontentsORIG\clearpage}
+
+%%%%%%%%%%%%%%%Works Cited%%%%%%%%%%%%%%%%%%%%%%%
+
+    \newcommand{\workscited}{
+        \newpage
+        \phantomsection
+        \addcontentsline{toc}{section}{Works Cited}
+        \printbibliography
+        }
+
+%%%%%%%%%%%%%%%Plagiatserklärung%%%%%%%%%%%%%%%%%
+\newcommand{\plagiat}{
+    \newpage
+    
+    \selectlanguage{ngerman}
+    \thispagestyle{empty}
+    
+    \section*{Plagiatserklärung}
+    \pdfbookmark[0]{Plagiatserklärung}{Plagiatserklärung}
+    
+    \setlength{\parindent}{0em}
+    
+    \vspace*{20pt}
+    Hiermit erkläre ich, dass ich die vorliegende Arbeit selbständig verfasst und keine anderen als die angegebenen Quellen und Hilfsmittel benutzt habe. 
+    
+    \vspace*{65pt}
+    
+    \ifdefined\city
+        {\city, den} 
+    \fi
+    \ifdefined\handindate
+        \handindate 
+    \else \today 
+    \fi \hfill \author
+    }
