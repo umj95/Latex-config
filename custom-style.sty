@@ -1,0 +1,139 @@
+%%%%%%My Style Package%%%%%%%%
+% 
+% font
+%
+%\usepackage[T1]{fontenc}
+\usepackage{fontspec}
+
+\usepackage{tgcursor}
+
+\usepackage{ebgaramond}
+
+%EB Garamond Setup
+\setmainfont{EB Garamond}[RawFeature={ 
+    %+aalt,    %Access All Alternates
+    %+c2pc,    %Petite Capitals From Capitals
+    %+c2sc,    %Small Capitals From Capitals
+    %+case,    %Case-Sensitive Forms
+    %+dlig,    %Discretionary Ligatures
+    %+frac,    %Fractions
+    %+hist,    %Historical Forms
+    %+hlig,    %Historical Ligatures
+    +kern,    %Kerning
+    +liga,    %Standard Ligatures
+    %+lnum,    %Lining Figures
+    %+mark,    %Mark Positioning
+    %+mkmk,    %Mark to Mark Positioning
+    +onum,    %Oldstyle Figures
+    %+ordn,    %Ordinals
+    %+pcap,    %Petite Capitals
+    +pnum,    %Proportional Figures
+    %+sinf,    %Scientific Inferiors
+    %+smcp,    %Small Capitals
+    %+ss01,    %Stylistic Set 1 (all small caps)
+    %+ss02,    %Stylistic Set 2
+    %+ss03,    %Stylistic Set 3
+    %+ss04,    %Stylistic Set 4
+    %+ss05,    %Stylistic Set 5
+    %+ss06,    %Stylistic Set 6
+    %+ss07,    %Stylistic Set 7
+    %+subs,    %Subscript
+    %+sups,    %Superscript
+    %+swsh,    %Swash (Italics and Q)
+    %+tnum     %Tabular Figures
+    }
+]
+\usepackage[super]{nth}				% enumerations
+
+\setkomafont{disposition}{\scshape} % make headings sc
+%
+% environments
+%
+%smart placement of author
+    \def\signed #1{	
+        {\leavevmode\unskip\nobreak\hfil\penalty50\hskip2em
+        \hbox{}\nobreak\hfil #1%
+        \parfillskip=0pt \finalhyphendemerits=0 \endgraf}
+    }
+
+%long quotes with author
+    \newsavebox\mybox							
+    \newenvironment{aquote}[1]  
+            {\savebox\mybox{#1}\begin{quote}}
+            {\signed{\usebox\mybox}\end{quote}}
+  
+%adjust indent in footnotes
+    \deffootnote[1.5em]{1.5em}{1em}{%
+        \makebox[1em][l]{\textsuperscript{\thefootnotemark}}%
+    }
+
+%Use Cite command for mute citations
+    \DeclareCiteCommand{\cite}{}{}{}{}
+
+%
+% layout
+%
+\usepackage{microtype}	%kerning
+
+\usepackage{setspace}   %1,5facher Zeilenabstand im Fließtext
+
+\onehalfspacing
+
+%Emdash
+    \DeclareRobustCommand{\thinskip}{\hskip 0.16667em\relax}
+    \def\emdash{---}
+    \def\d@sh#1#2{\unskip#1\thinskip#2\thinskip\ignorespaces}
+    \def\Dash{\d@sh\nobreak\emdash}
+    \def\Ldash{\d@sh\empty{\hbox{\emdash}\nobreak}}
+    \def\Rdash{\d@sh\nobreak\emdash}
+
+\usepackage[a4paper]{geometry}
+
+\usepackage[strict]{changepage}
+
+%Verhinderung von "Schusterjungen" und "Hurenkindern"
+    \clubpenalty=10000
+    \widowpenalty=10000 
+    \displaywidowpenalty = 10000
+    \tolerance=500 %Zeilenumbruch
+
+%Hyphenation
+    \tolerance=9999
+    \emergencystretch=10pt
+    \hyphenpenalty=10000
+    \exhyphenpenalty=100
+%
+% Tables, Figures, etc.
+%
+\usepackage{graphicx}
+	\graphicspath{ {./images/} }
+
+%
+% Links and PDF options
+%
+    \usepackage[hyperfootnotes=false, pdfpagelabels, hidelinks]{hyperref}
+        \urlstyle{rm}
+        \hypersetup{%
+            bookmarksopen={true},
+            bookmarksnumbered=true,
+            pdfstartpage={1},
+            pdftitle={\@author---\@title},
+            pdfsubject={\@title},
+            pdfauthor={\@author},
+            pdfkeywords={\ifdefined\keywords
+                            \keywords
+                        \else
+                            \@title
+                        \fi},
+            pdfcreator={hyperref},
+            pdfproducer={LaTeX with hyperref},
+            pdffitwindow={false},
+            pdfpagelayout={SinglePage}
+        }
+
+%
+% Labels for Tables, Figures, etc.
+%
+\usepackage{cleveref} % Must be loaded after hyperref!
+\usepackage[labelfont = {sc}]{caption}
+\Crefformat{figure}{#2{}\scshape{Figure} #1{}#3}
