@@ -12,33 +12,33 @@
 %%%%%%%%%%%%%%%%%%%
     % Personal Info
     \author{***REMOVED*** ***REMOVED***} %Name
-    \newcommand{\authormail}{} %Email
-    \newcommand{\matrikelnr}{} %Matrikelnummer
-    \newcommand{\authoraddress}{} %Addresse
-    
+    \newcommand{\authormail}{j.umbreit@online.de} %Email
+    \newcommand{\matrikelnr}{1767605} %Matrikelnummer
+    \newcommand{\authoraddress}{Dr.-Hipp-Str. 5\\***REMOVED*** ***REMOVED***} %Addresse
+
     % Department & Correction Info
-    \newcommand{\city}{} %Stadt (Für Plagiatserkl.)
-    \newcommand{\university}{} %Uni
-    \newcommand{\faculty}{} %Fakultät
-    \newcommand{\department}{} %Institut
-    \newcommand{\handindate}{} %Abgabedatum
-    
-    \newcommand{\tutor}{} %Betreuer*in
+    \newcommand{\city}{***REMOVED***} %Stadt (Für Plagiatserkl.)
+    \newcommand{\university}{Universität ***REMOVED***} %Uni
+    \newcommand{\faculty}{Fakultät für Philosophie, Kunst-, Geschichts- \& Gesellschaftswissenschaften} %Fakultät
+    \newcommand{\department}{Institut für ***REMOVED***} %Institut
+    \newcommand{\handindate}{\today} %Abgabedatum
+
+    \newcommand{\tutor}{Dr. Seuss} %Betreuer*in
     %Use \maketitle for regular title and \maketitlepage for full title page
-    \newcommand{\coursetype}{} %Kursart
-    \newcommand{\coursetitle}{} %Name des Kurses
-    \newcommand{\coursenumber}{} %Kursnummer
-    
+    \newcommand{\coursetype}{Testkurs} %Kursart
+    \newcommand{\coursetitle}{Notensatz mit \LaTeX \& Lilypond} %Name des Kurses
+    \newcommand{\coursenumber}{098765} %Kursnummer
+
     % Paper Info
     \title{
-        Religious Reform, Princely Patronage, and Josquin's \emph{Miserere mei, Deus}} %Titel der Arbeit
-    \date{}
-    \newcommand{\papertype}{} %Art der Arbeit
-    \newcommand{\keywords}{} %Schlagwörter
-    
+        Testdokument} %Titel der Arbeit
+    \date{\today}
+    \newcommand{\papertype}{Testarbeit} %Art der Arbeit
+    \newcommand{\keywords}{Latex, Lilypond, ***REMOVED***, Notensatz} %Schlagwörter
+
     % input encoding & language
     %\newcommand{\mainlanguage}{ngerman} %Uncomment if main language is German
-    \newcommand{\mainlanguage}{UKenglish} 
+    \newcommand{\mainlanguage}{UKenglish}
     \usepackage[ngerman, \mainlanguage]{babel}
 %
 % Literature & Bibliography Resources
@@ -47,7 +47,7 @@
 
 \usepackage[style=mla,backend=biber]{biblatex}
     \addbibresource{} %.bib-file für Literatur
-  
+
 %
 % Lilypond-support
 %
@@ -63,61 +63,64 @@
 \makeatletter
     \newcommand{\maketitlepage}{
         \phantomsection
-        \pdfbookmark[0]{Cover}{Cover}
+        \pdfbookmark[0]{Cover}{Cover}%
+% Lilypond-support
+%
+%\usepackage{mylilypond}
         \label{Deckblatt}
         \thispagestyle{empty}
         \begin{titlepage}
-        
+
         %Seite zentrieren
         %\begin{adjustwidth}{-2cm}{}
         \renewcommand{\thepage}{}
-        
+
         \begin{center}
             \selectlanguage{ngerman}
-            
+
             \ifdefined\university
                 \large{\university\\}
             \else
                 \\ \fi
-             
+
             \ifdefined\faculty
                 \large{\faculty\\}
             \else
                 \\ \fi
-            
+
             \ifdefined\department
                 \large{\department\\}
             \else
                 \\ \fi
-            
+
             \vspace*{6em}
-            
+
             \foreignlanguage{UKenglish}{
                 \Huge{\textsc{\@title}}
             }
-            
+
             \vspace*{3em}
-            
+
             \ifdefined\papertype
                 \Large{\papertype\\ \vspace{2em}}
             \else
                 \\ \fi
-            
+
             \ifdefined\tutor
                 \huge{\tutor\\ \vspace*{1.5em}}
             \else
                 \\ \fi
-            
+
             \ifdefined\handindate
                 \large{Abgabedatum: \handindate\\}
             \else
                 \large{\today\\} \fi
-            
+
             %\includegraphics[width=0.35\textwidth]{Unisiegel.png}}
-            
+
         \end{center}
         \vfill
-        
+
         \begin{flushleft}
         \@author\\
         \ifdefined\authormail
@@ -130,17 +133,17 @@
             \authoraddress\\
         \else \\ \fi
         \end{flushleft}
-        
+
         %\end{adjustwidth}
         \selectlanguage{\mainlanguage}
         \end{titlepage}
-        
+
         \newpage
     }
 \makeatother
 
 %%%%%%%%%%%%%%%%%%Simple Title%%%%%%%%%%%%%%%%%%
-\makeatletter         
+\makeatletter
     \renewcommand\maketitle{
         \selectlanguage{ngerman}
         \begin{flushleft}
@@ -150,7 +153,7 @@
             \tutor\\
             \handindate
         \end{flushleft}
-        
+
         \begin{center}
             \vspace{2em}
             \textsc{\huge{\@title}}\\[4ex]
@@ -165,35 +168,35 @@
 
 %%%%%%%%%%%%%%%Works Cited%%%%%%%%%%%%%%%%%%%%%%%
 
-    \newcommand{\workscited}{
-        \newpage
-        \phantomsection
-        \addcontentsline{toc}{section}{Works Cited}
-        \printbibliography
-        }
+\newcommand{\workscited}{
+    \newpage
+    \phantomsection
+    \addcontentsline{toc}{section}{Works Cited}
+    \printbibliography
+    }
 
 %%%%%%%%%%%%%%%Plagiatserklärung%%%%%%%%%%%%%%%%%
 \newcommand{\plagiat}{
     \newpage
-    
+
     \selectlanguage{ngerman}
     \thispagestyle{empty}
-    
+
     \section*{Plagiatserklärung}
     \pdfbookmark[0]{Plagiatserklärung}{Plagiatserklärung}
-    
+
     \setlength{\parindent}{0em}
-    
+
     \vspace*{20pt}
-    Hiermit erkläre ich, dass ich die vorliegende Arbeit selbständig verfasst und keine anderen als die angegebenen Quellen und Hilfsmittel benutzt habe. 
-    
+    Hiermit erkläre ich, dass ich die vorliegende Arbeit selbständig verfasst und keine anderen als die angegebenen Quellen und Hilfsmittel benutzt habe.
+
     \vspace*{65pt}
-    
+
     \ifdefined\city
-        {\city, den} 
+        {\city, den}
     \fi
     \ifdefined\handindate
-        \handindate 
-    \else \today 
+        \handindate
+    \else \today
     \fi \hfill \author
     }
