@@ -11,3 +11,4 @@ The commands (re-)defined so far are:
 - \workscited
 - \tableofcontents
 - \plagiat
+- \mylilypond[#1 #2] (#1 is the file(path) and #2 is the caption)
