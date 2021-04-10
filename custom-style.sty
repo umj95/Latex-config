@@ -10,7 +10,7 @@
 \usepackage{ebgaramond}
 
 %EB Garamond Setup
-\setmainfont{EB Garamond}[RawFeature={ 
+\setmainfont{EB Garamond}%[RawFeature={ 
     %+aalt,    %Access All Alternates
     %+c2pc,    %Petite Capitals From Capitals
     %+c2sc,    %Small Capitals From Capitals
@@ -19,15 +19,15 @@
     %+frac,    %Fractions
     %+hist,    %Historical Forms
     %+hlig,    %Historical Ligatures
-    +kern,    %Kerning
-    +liga,    %Standard Ligatures
+    %+kern,    %Kerning
+    %+liga,    %Standard Ligatures
     %+lnum,    %Lining Figures
     %+mark,    %Mark Positioning
     %+mkmk,    %Mark to Mark Positioning
-    +onum,    %Oldstyle Figures
+    %+onum,    %Oldstyle Figures
     %+ordn,    %Ordinals
     %+pcap,    %Petite Capitals
-    +pnum,    %Proportional Figures
+    %+pnum,    %Proportional Figures
     %+sinf,    %Scientific Inferiors
     %+smcp,    %Small Capitals
     %+ss01,    %Stylistic Set 1 (all small caps)
@@ -41,8 +41,8 @@
     %+sups,    %Superscript
     %+swsh,    %Swash (Italics and Q)
     %+tnum     %Tabular Figures
-    }
-]
+    %}
+%]
 \usepackage[super]{nth}				% enumerations
 
 \setkomafont{disposition}{\scshape} % make headings sc
@@ -68,7 +68,7 @@
     }
 
 %Use Cite command for mute citations
-    \DeclareCiteCommand{\cite}{}{}{}{}
+%    \DeclareCiteCommand{\cite}{}{}{}{}
 
 %
 % layout
@@ -129,11 +129,12 @@
             pdfproducer={LaTeX with hyperref},
             pdffitwindow={false},
             pdfpagelayout={SinglePage}
-        }
+       }
 
 %
 % Labels for Tables, Figures, etc.
 %
 \usepackage{cleveref} % Must be loaded after hyperref!
 \usepackage[labelfont = {sc}]{caption}
-\Crefformat{figure}{#2{}\scshape{Figure} #1{}#3}
+%\usepackage{capt-of}
+\Crefformat{Figure}{#2{}\scshape{Figure} #1{}#3}
