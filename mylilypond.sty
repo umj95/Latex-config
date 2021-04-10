@@ -1,0 +1,33 @@
+%
+%   File to handle inclusion of Lilypond files
+%
+%   To use, copy \usepackage{mylilypond}
+%
+\usepackage[
+            fragment=false,             %should only be enabled for in-line snippets
+            staffsize=16,               %Staff Size (Default: Matching document font size)
+            line-width=0.8\textwidth,   %Define linewidth (pt, cm, ex, x\textwidth
+            pass-fonts=true,            %passes font to Lilypond
+            current-font-as-main=true,  %use the *current* font
+            cleantmp=true,              %Garbage collection of tmp files
+            %debug=true,                %uncomment to save log files for debugging
+        ]{lyluatex}
+
+\newcounter{musicnumber}    %Counter for the number of Music snippets in the textwidth
+
+\newenvironment{music}[1]{%
+    \newcommand{\tmp}{#1}
+    \begin{figure}
+        \begin{center}
+        }{%
+        \end{center}
+    \end{figure}
+    \captionof{Figure}{#1}
+    }
+
+\newcommand{\mylilypond}[2]{%
+    \begin{music}{#2}
+        \lilypondfile{#1}
+    \end{music}
+    %\label{#3}
+}
