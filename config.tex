@@ -4,6 +4,8 @@
 % Use \plagiat to print a Plagiatserklärung on its own page
 % After \tableofcontents a page break always follows
 % Use \workscited to print the works cited page (new page)
+% To add lilypond support, uncomment \usepackage{mylilypond}.
+% Use \mylilypond[#1 #2] to include .ly-file, where #1 is the file(path) and #2 is the caption
 
 %%%%%%%%%%%%%%%%%%%
 %%%%%Variables%%%%%
@@ -44,7 +46,13 @@
 \usepackage[babel]{csquotes}
 
 \usepackage[style=mla,backend=biber]{biblatex}
-    \addbibresource{sources.bib} %.bib-file für Literatur
+    \addbibresource{} %.bib-file für Literatur
+  
+%
+% Lilypond-support
+%
+%\usepackage{mylilypond}
+
 %%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%
