@@ -11,30 +11,29 @@
 %%%%%Variables%%%%%
 %%%%%%%%%%%%%%%%%%%
     % Personal Info
-    \author{Janosch Umbreit} %Name
-    \newcommand{\authormail}{j.umbreit@online.de} %Email
-    \newcommand{\matrikelnr}{1767605} %Matrikelnummer
-    \newcommand{\authoraddress}{Dr.-Hipp-Str. 5\\93053 Regensburg} %Addresse
+    \author{} %Name
+    \newcommand{\authormail}{} %Email
+    \newcommand{\matrikelnr}{} %Matrikelnummer
+    \newcommand{\authoraddress}{}%Addresse
 
     % Department & Correction Info
-    \newcommand{\city}{Regensburg} %Stadt (Für Plagiatserkl.)
-    \newcommand{\university}{Universität Regensburg} %Uni
-    \newcommand{\faculty}{Fakultät für Philosophie, Kunst-, Geschichts- \& Gesellschaftswissenschaften} %Fakultät
-    \newcommand{\department}{Institut für Musikwissenschaft} %Institut
+    \newcommand{\city}{} %Stadt (Für Plagiatserkl.)
+    \newcommand{\university}{} %Uni
+    \newcommand{\faculty}{} %Fakultät
+    \newcommand{\department}{} %Institut
     \newcommand{\handindate}{\today} %Abgabedatum
 
-    \newcommand{\tutor}{Dr. Seuss} %Betreuer*in
+    \newcommand{\tutor}{} %Betreuer*in
     %Use \maketitle for regular title and \maketitlepage for full title page
-    \newcommand{\coursetype}{Testkurs} %Kursart
-    \newcommand{\coursetitle}{Notensatz mit \LaTeX \& Lilypond} %Name des Kurses
-    \newcommand{\coursenumber}{098765} %Kursnummer
+    \newcommand{\coursetype}{} %Kursart
+    \newcommand{\coursetitle}{} %Name des Kurses
+    \newcommand{\coursenumber}{} %Kursnummer
 
     % Paper Info
-    \title{
-        Testdokument} %Titel der Arbeit
+    \title{} %Titel der Arbeit
     \date{\today}
-    \newcommand{\papertype}{Testarbeit} %Art der Arbeit
-    \newcommand{\keywords}{Latex, Lilypond, Musikwissenschaft, Notensatz} %Schlagwörter
+    \newcommand{\papertype}{} %Art der Arbeit
+    \newcommand{\keywords}{} %Schlagwörter
 
     % input encoding & language
     %\newcommand{\mainlanguage}{ngerman} %Uncomment if main language is German
@@ -64,18 +63,16 @@
     \newcommand{\maketitlepage}{
         \phantomsection
         \pdfbookmark[0]{Cover}{Cover}%
-% Lilypond-support
-%
-%\usepackage{mylilypond}
-        \label{Deckblatt}
+        \label{Cover}
         \thispagestyle{empty}
         \begin{titlepage}
 
-        %Seite zentrieren
+        %center page
         %\begin{adjustwidth}{-2cm}{}
         \renewcommand{\thepage}{}
 
         \begin{center}
+            %change according to language of institution
             \selectlanguage{ngerman}
 
             \ifdefined\university
@@ -159,7 +156,7 @@
             \textsc{\huge{\@title}}\\[4ex]
         \end{center}
         \selectlanguage{\mainlanguage}
-    } % Note the extra }
+    }
 \makeatother
 
 %%%%%%%%%%%%%%%Table of Contents%%%%%%%%%%%%%%%%%
