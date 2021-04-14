@@ -8,7 +8,7 @@ The config.tex-file contains all the variables for handing in a academic term pa
 The commands (re-)defined so far are:
 - `\maketitle`
 - `\maketitlepage`
-- `\workscitedi`
+- `\workscited`
 - `\tableofcontents`
 - `\plagiat`
 - `\mylilypond[#1 #2]` (#1 is the file(path) and #2 is the caption)
