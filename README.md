@@ -2,7 +2,7 @@
 Personal LaTeX setup: style sheet for packages, fonts, etc. and config-file for variables and custom title pages etc. to fit my whims and needs. 
 I mainly write musicological essays, therefore I have devised a way to include short music examples with the wonderful `lyluatex`-package. 
 Since most of my research focuses on the early modern period and since I like my typography to match my subject, I am using the lovely humanist open source font [EB Garamond](http://www.georgduffner.at/ebgaramond/index.html), based on [Claude Garamond’s](https://en.wikipedia.org/wiki/Claude_Garamond) 16th century cuts. 
-So far, I have not needed another font, if I come into the situation, I might outsources the font setup in its own dedicated setup file.
+So far, I have not needed another font, if I come into the situation, I might outsource the font stuff in its own dedicated setup file.
 The defaults of this setup are set for German meta information (i.e. the stuff on the cover page and the plagiarism statement) and a language for the body text, typically German or English, that can be specified in the `config.tex` file.
 
 ## Explanation 
