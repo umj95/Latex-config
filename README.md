@@ -8,13 +8,13 @@ The defaults of this setup are set for German meta information (i.e. the stuff o
 ## Explanation 
 The `custom-style.sty` file contains commonly loaded packages, a font configuration for EB Garamond, the hyperref-setup, etc.
 
-The `config.tex` file contains all the variables for handing in an academic term paper, as well as setups for custom titlepage, anti-plagiarism declaration, works cited etc.
+The `config.tex` file contains all the variables for handing in an academic term paper, as well as setups for custom titlepage, anti-plagiarism declaration, works cited etc. From within `config.tex`, the `mylilypond` command and everything in the `mylilypond.sty` can be enabled under the ‘Lilypond support’ header.
 
 `main.tex` is just some boilerplate TeX, calling all the other files and expecting content in a folder named **content**
 
 The command `\mylilypond` calls for the `lyluatex` package, which requires an installation of [Lilypond](https://lilypond.org/) in order to work. If Lilypond is not installed in the expected location, the path can be specified as follows: `\usepackage[program=/path/to/executable]{lyluatex}` (line 6 in `mylilypond.sty`).
 
-The setup assumes that a koma document class is used, such as `scrartcl`.
+The setup assumes that a koma document class is used, such as `scrartcl`. Since `lyluatex` depends on LuaTeX, that recommends itself for compiling. Even without Lilypond support, either Lualatex or XeTeX should be used.
 
 Custom fonts should be saved in a subfolder called **fonts** and invoked as follows: `\setmainfont[Path=fonts/]{fontname.otf}`
 `\setmonofont[Path=fonts/,Scale=MatchLowercase]{fontname.otf}`
