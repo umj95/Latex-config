@@ -24,7 +24,9 @@ The commands and environments (re-)defined so far are:
 - `\mylilypond[#1 #2]` (#1 is the file(path) and #2 is the caption) – embeds musical examples with lilypond files
 - ```tex
   \begin{aquote}{\autocite[Pages]{citation.key}}
-    A block quote goes in here, the attribution is placed intelligently either in the last line or the following, flushright.
+    A block quote goes in here,
+    the attribution is placed intelligently
+    either in the last line or the following, flushright.
   \end{aquote}
 ```
 - ```tex
