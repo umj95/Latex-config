@@ -163,8 +163,13 @@
 \makeatother
 
 %%%%%%%%%%%%%%%Table of Contents%%%%%%%%%%%%%%%%%
-\let\tableofcontentsORIG\tableofcontents
-\renewcommand\tableofcontents{\thispagestyle{empty}\tableofcontentsORIG\clearpage}
+\newcommand{\tableofcontentspage}{
+    \newpage
+    \thispagestyle{empty}
+    \pdfbookmark[0]{Table of Contents}{Table of Contents}
+    \tableofcontents
+    \newpage
+}
 
 %%%%%%%%%%%%%%%Works Cited%%%%%%%%%%%%%%%%%%%%%%%
 
