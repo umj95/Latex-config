@@ -8,7 +8,7 @@ The `config.tex` file contains all the variables for handing in an academic term
 
 The command `\mylilypond` calls for the `lyluatex` package, which requires an installation of [Lilypond](https://lilypond.org/) in order to work. If Lilypond is not installed in the expected location, the path can be specified as follows: `\usepackage[program=/path/to/executable]{lyluatex}` (line 6 in `mylilypond.sty`).
 
-The setup assumes that a koma document classes is used, such as `scrartcl`.
+The setup assumes that a koma document class is used, such as `scrartcl`.
 
 Custom fonts should be saved in a subfolder called **fonts** and invoked as follows: `\setmainfont[Path=fonts/]{fontname.otf}`
 `\setmonofont[Path=fonts/,Scale=MatchLowercase]{fontname.otf}`
