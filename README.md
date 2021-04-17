@@ -9,11 +9,11 @@ The command `\mylilypond` calls for the `lyluatex` package, which requires an in
 
 The setup assumes that a koma document classes is used, such as `scrartcl`.
 
-- Custom fonts should be saved in a subfolder called fonts and invoked as follows: `\setmainfont[Path=fonts/]{fontname.otf}`
+Custom fonts should be saved in a subfolder called **fonts** and invoked as follows: `\setmainfont[Path=fonts/]{fontname.otf}`
 `\setmonofont[Path=fonts/,Scale=MatchLowercase]{fontname.otf}`
 The 'scale' option can match the lower/upper case font, or accept a factor, i.e. 0.8
 
-- Graphics should be saved in a subfolder called images.
+Graphics should be saved in a subfolder called **images**.
 
 The commands and environments (re-)defined so far are:
 - `\maketitle` – creates a title and author info on the first page
@@ -22,21 +22,25 @@ The commands and environments (re-)defined so far are:
 - `\tableofcontents` – creates a table of contents on a new page
 - `\plagiat` – creates a plagiarism statement
 - `\mylilypond[#1 #2]` (#1 is the file(path) and #2 is the caption) – embeds musical examples with lilypond files
-- ```tex
-  \begin{aquote}{\autocite[Pages]{citation.key}}
-    A block quote goes in here,
-    the attribution is placed intelligently
-    either in the last line or the following, flushright.
-  \end{aquote}
-```
-- ```tex
-  \begin{figure}
-    \centering
-  	\includegraphics[width=\textwidth]{nameofgraphic.png}
-  	\caption{My Caption}
-  	\label{figure n}
-  \end{figure}
-```
+- block quotes are handled as follows:
+
+    ```tex
+      \begin{aquote}{\autocite[Pages]{citation.key}}
+        A block quote goes in here,
+        the attribution is placed intelligently
+        either in the last line or the following, flushright.
+      \end{aquote}
+    ```
+- figures are inserted as follows:
+
+    ```tex
+      \begin{figure}
+        \centering
+      	\includegraphics[width=\textwidth]{nameofgraphic.png}
+      	\caption{My Caption}
+      	\label{figure n}
+      \end{figure}
+    ```
 - `\autocite` is assumed as the default for citations and is used as follows: `\autocite[Text before the citation, such as qtd. in][the pagerange]{citation.key}`
 
 ## A List of All Required Packages:
@@ -62,3 +66,53 @@ All packages are loaded via `custom-style.sty`, unless they require user input, 
 
 ### In `mylilypond.sty`
 - lyluatex
+
+## Sample Project
+
+A project could have the following structure:
+
+    ```
+    .                     //your root directory
+    |
+    +-- config.tex
+    +-- custom-style.sty
+    +-- mylilypond.sty
+    |
+    +-- fonts             //your fonts
+    |   +-- mymainfont.otf
+    |   +-- mymonospacedfont.otf
+    +-- images            //your images
+    |   +-- image1.png
+    |   +-- image2.png
+    +-- music             //your music examples
+    |   +-- musicexample1.ly
+    |   +-- musicexample2.ly
+    +-- content           //your actual text
+    |   +-- introduction.tex
+    |   +-- mainpart.tex
+    |   +-- conclusion.tex
+    |
+    +-- sources.bib       //your bibliography
+    +-- main.tex          //master document
+    ```
+
+The `main.tex` file could then look like this:
+
+    ```tex
+    \documentclass[a4paper]{scrarticle} //your documentclass
+
+    \include{config}
+    \usepackage{custom-style}
+
+    \begin{document}
+      \maketitlepage                //if you want a full titlepage
+      \tableofcontents              //if you want a TOC
+
+      \input{content/introduction}  //your body text
+      \input{content/mainpart}
+      \input{content/conclusion}
+
+      \workscited             //if you want a bibliography
+      \plagiat                //if you want a plagiarism statement
+    \end{document}
+    ```
