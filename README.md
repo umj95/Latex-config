@@ -23,7 +23,7 @@ The 'scale' option can match the lower/upper case font, or accept a factor, i.e.
 Graphics should be saved in a subfolder called **images**.
 
 The commands and environments (re-)defined so far are:
-- `\maketitle` – creates a title and author info on the first page
+- `\mymaketitle` – creates title, author and course info info on the first page
 - `\maketitlepage` – creates a dedicated titlepage
 - `\workscited` – creates a works cited list on a new page
 - `\tableofcontentspage` – creates a table of contents on a new page
