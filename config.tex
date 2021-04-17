@@ -14,17 +14,17 @@
     \author{} %Name
     \newcommand{\authormail}{} %Email
     \newcommand{\matrikelnr}{} %student number
-    \newcommand{\authoraddress}{}%address
+    \newcommand{\authoraddress}{} %address
 
-    % Department & Correction Info -- These should be sekf explanatory
-    \newcommand{\city}{} 
-    \newcommand{\university}{} 
+    % Department & Correction Info -- These should be self explanatory
+    \newcommand{\city}{}
+    \newcommand{\university}{}
     \newcommand{\faculty}{}
-    \newcommand{\department}{} 
-    \newcommand{\handindate}{\today} 
+    \newcommand{\department}{}
+    \newcommand{\handindate}{}
 
-    \newcommand{\tutor}{} 
-    \newcommand{\coursetype}{} 
+    \newcommand{\tutor}{}
+    \newcommand{\coursetype}{}
     \newcommand{\coursetitle}{}
     \newcommand{\coursenumber}{}
 
@@ -35,15 +35,18 @@
     \newcommand{\keywords}{}
 
     % input encoding & language
-    %\newcommand{\mainlanguage}{ngerman} %Uncomment if main language is German
-    \newcommand{\mainlanguage}{UKenglish}
-    \usepackage[ngerman, \mainlanguage]{babel}
+    \newcommand{\mainlanguage}{ngerman} %Uncomment if main language is German
+    %\newcommand{\mainlanguage}{UKenglish}
+    \usepackage[british, ngerman]{babel}
 %
 % Literature & Bibliography Resources
 %
 \usepackage[babel]{csquotes}
 
-\usepackage[style=mla,backend=biber]{biblatex}
+\usepackage[style=mla,
+            guessmedium=true,
+            mancitepar=true,
+            backend=biber]{biblatex}
     \addbibresource{} %.bib-file for literature
 
 %
@@ -91,9 +94,10 @@
 
             \vspace*{6em}
 
-            \foreignlanguage{UKenglish}{
+            %uncomment if title is not German
+            %\foreignlanguage{\mainlanguage}{
                 \Huge{\textsc{\@title}}
-            }
+            %}
 
             \vspace*{3em}
 
@@ -103,12 +107,12 @@
                 \\ \fi
 
             \ifdefined\tutor
-                \huge{\tutor\\ \vspace*{1.5em}}
+                \Large{Eingereicht bei \tutor\\ \vspace*{1.5em}}
             \else
                 \\ \fi
 
             \ifdefined\handindate
-                \large{Abgabedatum: \handindate\\}
+                \large{Abgegeben am \handindate\\}
             \else
                 \large{\today\\} \fi
 
@@ -120,7 +124,7 @@
         \begin{flushleft}
         \@author\\
         \ifdefined\authormail
-            \href{mailto:\authormail}{\authormail}\\
+            \href{mailto:\authormail}{\texttt{\authormail}}\\
         \else \\ \fi
         \ifdefined\matrikelnr
             {Matrikelnummer: \matrikelnr\\}
@@ -167,32 +171,26 @@
 \newcommand{\workscited}{
     \newpage
     \phantomsection
-    \addcontentsline{toc}{section}{Works Cited}
+    \addcontentsline{toc}{section}{Literatur}
     \printbibliography
     }
 
 %%%%%%%%%%%%%%%Plagiatserklärung%%%%%%%%%%%%%%%%%
-\newcommand{\plagiat}{
-    \newpage
+\makeatletter
+    \newcommand{\plagiat}{
+        \newpage
 
-    \selectlanguage{ngerman}
-    \thispagestyle{empty}
+        %\selectlanguage{ngerman}
+        \thispagestyle{empty}
 
-    \section*{Plagiatserklärung}
-    \pdfbookmark[0]{Plagiatserklärung}{Plagiatserklärung}
+        \section*{Plagiatserklärung}
+        \pdfbookmark[0]{Plagiatserklärung}{Plagiatserklärung}
+        %\setlength{\parindent}{0em}
+        %\vspace*{20pt}
+        \noindent Hiermit erkläre ich, dass ich die vorliegende Arbeit selbständig verfasst und keine anderen als die angegebenen Quellen und Hilfsmittel benutzt habe.
 
-    \setlength{\parindent}{0em}
+        \vspace*{65pt}
 
-    \vspace*{20pt}
-    Hiermit erkläre ich, dass ich die vorliegende Arbeit selbständig verfasst und keine anderen als die angegebenen Quellen und Hilfsmittel benutzt habe.
-
-    \vspace*{65pt}
-
-    \ifdefined\city
-        {\city, den}
-    \fi
-    \ifdefined\handindate
-        \handindate
-    \else \today
-    \fi \hfill \author
+        \city , den \handindate \hfill \@author
     }
+\makeatother
