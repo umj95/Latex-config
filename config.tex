@@ -68,74 +68,41 @@
         \label{Cover}
         \thispagestyle{empty}
         \begin{titlepage}
+            \renewcommand{\thepage}{}
 
-        %center page
-        %\begin{adjustwidth}{-2cm}{}
-        \renewcommand{\thepage}{}
+            \begin{center}
+                %change according to language of institution
+                \selectlanguage{ngerman}
 
-        \begin{center}
-            %change according to language of institution
-            \selectlanguage{ngerman}
-
-            \ifdefined\university
                 \large{\university\\}
-            \else
-                \\ \fi
-
-            \ifdefined\faculty
                 \large{\faculty\\}
-            \else
-                \\ \fi
-
-            \ifdefined\department
                 \large{\department\\}
-            \else
-                \\ \fi
+                
+                \vspace*{6em}
 
-            \vspace*{6em}
+                %uncomment if title is not German
+                %\foreignlanguage{\mainlanguage}{
+                    \Huge{\textsc{\@title}}
+                %}
 
-            %uncomment if title is not German
-            %\foreignlanguage{\mainlanguage}{
-                \Huge{\textsc{\@title}}
-            %}
+                \vspace*{3em}
 
-            \vspace*{3em}
-
-            \ifdefined\papertype
                 \Large{\papertype\\ \vspace{2em}}
-            \else
-                \\ \fi
-
-            \ifdefined\tutor
                 \Large{Eingereicht bei \tutor\\ \vspace*{1.5em}}
-            \else
-                \\ \fi
-
-            \ifdefined\handindate
                 \large{Abgegeben am \handindate\\}
-            \else
-                \large{\today\\} \fi
 
-            %\includegraphics[width=0.35\textwidth]{Unisiegel.png}}
+            \end{center}
 
-        \end{center}
-        \vfill
+            \vfill
 
-        \begin{flushleft}
-        \@author\\
-        \ifdefined\authormail
+            \begin{flushleft}
+            \@author\\
             \href{mailto:\authormail}{\texttt{\authormail}}\\
-        \else \\ \fi
-        \ifdefined\matrikelnr
             {Matrikelnummer: \matrikelnr\\}
-        \else \\ \fi
-        \ifdefined\authoraddress
             \authoraddress\\
-        \else \\ \fi
-        \end{flushleft}
+            \end{flushleft}
 
-        %\end{adjustwidth}
-        \selectlanguage{\mainlanguage}
+            \selectlanguage{\mainlanguage}
         \end{titlepage}
 
         \newpage
@@ -190,8 +157,6 @@
 
         \section*{Plagiatserklärung}
         \pdfbookmark[0]{Plagiatserklärung}{Plagiatserklärung}
-        %\setlength{\parindent}{0em}
-        %\vspace*{20pt}
         \noindent Hiermit erkläre ich, dass ich die vorliegende Arbeit selbständig verfasst und keine anderen als die angegebenen Quellen und Hilfsmittel benutzt habe.
 
         \vspace*{65pt}
