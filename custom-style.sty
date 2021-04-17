@@ -1,48 +1,63 @@
 %%%%%%My Style Package%%%%%%%%
-% 
+%
 % font
 %
 %\usepackage[T1]{fontenc}
 \usepackage{fontspec}
+%render Small Caps correctly
+\defaultfontfeatures{SmallCapsFeatures={Renderer=Full}}
 
 \usepackage{tgcursor}
 
 \usepackage{ebgaramond}
 
 %EB Garamond Setup
-\setmainfont{EB Garamond}%[RawFeature={ 
-    %+aalt,    %Access All Alternates
-    %+c2pc,    %Petite Capitals From Capitals
-    %+c2sc,    %Small Capitals From Capitals
-    %+case,    %Case-Sensitive Forms
-    %+dlig,    %Discretionary Ligatures
-    %+frac,    %Fractions
-    %+hist,    %Historical Forms
-    %+hlig,    %Historical Ligatures
-    %+kern,    %Kerning
-    %+liga,    %Standard Ligatures
-    %+lnum,    %Lining Figures
-    %+mark,    %Mark Positioning
-    %+mkmk,    %Mark to Mark Positioning
-    %+onum,    %Oldstyle Figures
-    %+ordn,    %Ordinals
-    %+pcap,    %Petite Capitals
-    %+pnum,    %Proportional Figures
-    %+sinf,    %Scientific Inferiors
-    %+smcp,    %Small Capitals
-    %+ss01,    %Stylistic Set 1 (all small caps)
-    %+ss02,    %Stylistic Set 2
-    %+ss03,    %Stylistic Set 3
-    %+ss04,    %Stylistic Set 4
-    %+ss05,    %Stylistic Set 5
-    %+ss06,    %Stylistic Set 6
-    %+ss07,    %Stylistic Set 7
-    %+subs,    %Subscript
-    %+sups,    %Superscript
-    %+swsh,    %Swash (Italics and Q)
-    %+tnum     %Tabular Figures
-    %}
-%]
+\setmainfont{EB Garamond}[RawFeature={
+%%% Caps, Sub- & Superscript %%%
+%+smcp,      %SC
+%+c2sc,     %Captials to SC
+%+subs,      %Subscript
+%+sups,      %Superscript
+%+sinf,      %Scientific Inferiors
+%+ordn,      %Ordinals
+%+frac,      %Allows for arbitrary fractions
+%+case,      %Case-Sensitive Forms of diacritical signs, dashes etc
+%%% Figures %%%
+%lnum,       %Lining figures
++onum,      %Oldstyle figures
+%+tnum,      %Tabular Figures
++pnum,     %Proportional figures
+%%% Ligatures %%%
++calt,      %Contextual Alternates (Swashy Q, non-colliding f)
++liga,     %Standard Ligatures
++clig,     %Contextual Ligatures (italic final s)
+%+hlig,      %Historical Ligatures (sp st ct)
+%+dlig,     %Discretionary Ligatures (Th)
+%+swsh,      %Swash Italics
+%+salt,      %Stylistic Alternates (ɵ)
+%+ccmp,      %Glyph Composition / Decomposition
+%+locl,      %Localized forms according to language settings
++kern,      %Kerning
+%%% Character Variants %%%
+%+cv01,      %Character Variant 01 (s->ſ)
+%+cv02,      %Character Variant 02 (@)
+%+cv03,      %Character Variant 03 (J->I)
+%+cv06,      %Character Variant 06 (« ‹ › »)
++cv11      %Character Variant 11 (new 1)
+%+cv21,      %Character Variant 02 (new a)
+%+cv47,      %Character Variant 47 (ß <-> ss)
+%+cv82,      %Character Variant 82 (Alternate comma-shaped caron after d, l and t)
+%+cv83,      %Character Variant 83 (new χ)
+%+cv90,      %Character Variant 90 (new fleurons)
+%+cv91,      %Character Variant 91 (new pilcrow)
+%%% Stylistic Sets %%%
+%+ss01,      %Stylistic Set 01 (triangular variants of Д, Л, Љ)
+%+ss02,      %Stylistic Set 02 (v & u according to place)
+%+ss05,      %Stylistic Set 05 (apostrophe over next letter if no ascender)
+%+ss06,      %Stylistic Set 06 (IPA friendly β θ λ χ)
+%+ss07,      %Stylistic Set 07 (alternate h & k with diacritical signs)
+    }
+]
 \usepackage[super]{nth}				% enumerations
 
 \setkomafont{disposition}{\scshape} % make headings sc
@@ -50,18 +65,18 @@
 % environments
 %
 %smart placement of author
-    \def\signed #1{	
+    \def\signed #1{
         {\leavevmode\unskip\nobreak\hfil\penalty50\hskip2em
         \hbox{}\nobreak\hfil #1%
         \parfillskip=0pt \finalhyphendemerits=0 \endgraf}
     }
 
 %long quotes with author
-    \newsavebox\mybox							
-    \newenvironment{aquote}[1]  
+    \newsavebox\mybox
+    \newenvironment{aquote}[1]
             {\savebox\mybox{#1}\begin{quote}}
             {\signed{\usebox\mybox}\end{quote}}
-  
+
 %adjust indent in footnotes
     \deffootnote[1.5em]{1.5em}{1em}{%
         \makebox[1em][l]{\textsuperscript{\thefootnotemark}}%
@@ -73,7 +88,13 @@
 %
 % layout
 %
-\usepackage{microtype}	%kerning
+\usepackage[%
+    activate={true,nocompatibility},
+    final,
+    tracking=true,
+    factor=1100,
+    stretch=10,
+    shrink=10]{microtype}	%kerning
 
 \usepackage{setspace}   % set spacing to 1.5 line height
 
@@ -93,14 +114,14 @@
 
 %prevent widow and orphan lines
     \clubpenalty=10000
-    \widowpenalty=10000 
+    \widowpenalty=10000
     \displaywidowpenalty = 10000
     \tolerance=500 %line break
 
 %Hyphenation
     \tolerance=9999
     \emergencystretch=10pt
-    \hyphenpenalty=10000
+    \hyphenpenalty=500
     \exhyphenpenalty=100
 %
 % Tables, Figures, etc.
