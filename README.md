@@ -71,48 +71,48 @@ All packages are loaded via `custom-style.sty`, unless they require user input, 
 
 A project could have the following structure:
 
-    ```
-    .                     //your root directory
+  ```tex
+    .                     % your root directory
     |
     +-- config.tex
     +-- custom-style.sty
     +-- mylilypond.sty
     |
-    +-- fonts             //your fonts
+    +-- fonts             % your fonts
     |   +-- mymainfont.otf
     |   +-- mymonospacedfont.otf
-    +-- images            //your images
+    +-- images            % your images
     |   +-- image1.png
     |   +-- image2.png
-    +-- music             //your music examples
+    +-- music             % your music examples
     |   +-- musicexample1.ly
     |   +-- musicexample2.ly
-    +-- content           //your actual text
+    +-- content           % your actual text
     |   +-- introduction.tex
     |   +-- mainpart.tex
     |   +-- conclusion.tex
     |
-    +-- sources.bib       //your bibliography
-    +-- main.tex          //master document
-    ```
+    +-- sources.bib       % your bibliography
+    +-- main.tex          % master document
+  ```
 
 The `main.tex` file could then look like this:
 
-    ```tex
-    \documentclass[a4paper]{scrarticle} //your documentclass
+  ```tex
+    \documentclass[a4paper]{scrarticle} % your document class
 
     \include{config}
     \usepackage{custom-style}
 
     \begin{document}
-      \maketitlepage                //if you want a full titlepage
-      \tableofcontents              //if you want a TOC
+      \maketitlepage                    % if you want a full titlepage
+      \tableofcontents                  % if you want a TOC
 
-      \input{content/introduction}  //your body text
+      \input{content/introduction}      % your body text
       \input{content/mainpart}
       \input{content/conclusion}
 
-      \workscited             //if you want a bibliography
-      \plagiat                //if you want a plagiarism statement
+      \workscited                       % if you want a bibliography
+      \plagiat                          % if you want a plagiarism statement
     \end{document}
-    ```
+  ```
