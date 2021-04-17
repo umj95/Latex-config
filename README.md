@@ -10,6 +10,8 @@ The `custom-style.sty` file contains commonly loaded packages, a font configurat
 
 The `config.tex` file contains all the variables for handing in an academic term paper, as well as setups for custom titlepage, anti-plagiarism declaration, works cited etc.
 
+`main.tex` is just some boilerplate TeX, calling all the other files and expecting content in a folder named **content**
+
 The command `\mylilypond` calls for the `lyluatex` package, which requires an installation of [Lilypond](https://lilypond.org/) in order to work. If Lilypond is not installed in the expected location, the path can be specified as follows: `\usepackage[program=/path/to/executable]{lyluatex}` (line 6 in `mylilypond.sty`).
 
 The setup assumes that a koma document class is used, such as `scrartcl`.
