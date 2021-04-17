@@ -2,17 +2,19 @@
 Personal LaTeX setup: style sheet for packages, fonts, etc. and config-file for variables and custom title pages etc. to fit my whims and needs. 
 I mainly write musicological essays, therefore I have devised a way to include short music examples with the wonderful `lyluatex`-package. 
 Since most of my research focuses on the early modern period and since I like my typography to match my subject, I am using the lovely humanist open source font [EB Garamond](http://www.georgduffner.at/ebgaramond/index.html), based on [Claude Garamond’s](https://en.wikipedia.org/wiki/Claude_Garamond) 16th century cuts. 
-So far, I have not needed another font, if I come into the situation, I might outsources the font setup in its own dedicated setup file.
+So far, I have not needed another font, if I come into the situation, I might outsource the font stuff in its own dedicated setup file.
 The defaults of this setup are set for German meta information (i.e. the stuff on the cover page and the plagiarism statement) and a language for the body text, typically German or English, that can be specified in the `config.tex` file.
 
 ## Explanation 
 The `custom-style.sty` file contains commonly loaded packages, a font configuration for EB Garamond, the hyperref-setup, etc.
 
-The `config.tex` file contains all the variables for handing in an academic term paper, as well as setups for custom titlepage, anti-plagiarism declaration, works cited etc.
+The `config.tex` file contains all the variables for handing in an academic term paper, as well as setups for custom titlepage, anti-plagiarism declaration, works cited etc. From within `config.tex`, the `mylilypond` command and everything in the `mylilypond.sty` can be enabled under the ‘Lilypond support’ header.
+
+`main.tex` is just some boilerplate TeX, calling all the other files and expecting content in a folder named **content**
 
 The command `\mylilypond` calls for the `lyluatex` package, which requires an installation of [Lilypond](https://lilypond.org/) in order to work. If Lilypond is not installed in the expected location, the path can be specified as follows: `\usepackage[program=/path/to/executable]{lyluatex}` (line 6 in `mylilypond.sty`).
 
-The setup assumes that a koma document class is used, such as `scrartcl`.
+The setup assumes that a koma document class is used, such as `scrartcl`. Since `lyluatex` depends on LuaTeX, that recommends itself for compiling. Even without Lilypond support, either Lualatex or XeTeX should be used.
 
 Custom fonts should be saved in a subfolder called **fonts** and invoked as follows: `\setmainfont[Path=fonts/]{fontname.otf}`
 `\setmonofont[Path=fonts/,Scale=MatchLowercase]{fontname.otf}`
