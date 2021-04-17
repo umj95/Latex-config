@@ -122,5 +122,5 @@ The `main.tex` file could then look like this:
     \end{document}
   ```
 ## Credit
-The `.gitignore` files for both TeX and Lilypond auxiliary files are copied from the [Github's .gitignore repository](https://github.com/github/gitignore)
+The `.gitignore` files for both TeX and Lilypond auxiliary files are copied from [Github's .gitignore repository](https://github.com/github/gitignore)
 The `aquote` environment follows [this StackExchange answer](https://tex.stackexchange.com/a/13761)
