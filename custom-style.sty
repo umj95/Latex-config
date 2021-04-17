@@ -100,14 +100,6 @@
 
 \onehalfspacing
 
-%Emdash
-    \DeclareRobustCommand{\thinskip}{\hskip 0.16667em\relax}
-    \def\emdash{---}
-    \def\d@sh#1#2{\unskip#1\thinskip#2\thinskip\ignorespaces}
-    \def\Dash{\d@sh\nobreak\emdash}
-    \def\Ldash{\d@sh\empty{\hbox{\emdash}\nobreak}}
-    \def\Rdash{\d@sh\nobreak\emdash}
-
 \usepackage[a4paper]{geometry}
 
 \usepackage[strict]{changepage}
@@ -134,6 +126,7 @@
 %
     \usepackage[hyperfootnotes=false, pdfpagelabels, hidelinks]{hyperref}
         \urlstyle{rm}
+        \makeatletter
         \hypersetup{%
             bookmarksopen={true},
             bookmarksnumbered=true,
@@ -150,8 +143,8 @@
             pdfproducer={LaTeX with hyperref},
             pdffitwindow={false},
             pdfpagelayout={SinglePage}
-       }
-
+        }
+        \makeatother
 %
 % Labels for Tables, Figures, etc.
 %
