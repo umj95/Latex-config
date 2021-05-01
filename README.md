@@ -1,6 +1,6 @@
 # Latex-config
 This is my personal LaTeX setup, which I store here to have easy access for various writing tasks.
-It includes a style sheet for packages, fonts, etc. and config-file for variables and custom title pages etc. that fit my whims, as well as the requirements of my department.
+It includes a style sheet for packages, fonts, etc. and a config-file for variables and custom title pages etc. that fit my whims, as well as the requirements of my department.
 I mainly write musicological essays, therefore I have devised a way to include short music examples with the wonderful `lyluatex`-package. 
 Since most of my research focuses on the early modern period and since I like my typography to match my subject, I am using the lovely humanist open source font [EB Garamond](http://www.georgduffner.at/ebgaramond/index.html), based on [Claude Garamond’s](https://en.wikipedia.org/wiki/Claude_Garamond) 16th century cuts. 
 So far, I have not needed another font, if I come into the situation, I might outsource the font stuff in its own dedicated setup file.
@@ -10,7 +10,7 @@ At the moment it is advisable to assign every variable in `config.tex` a value, 
 ## Explanation 
 The `custom-style.sty` file contains commonly loaded packages, a font configuration for EB Garamond, the hyperref-setup, etc.
 
-The `config.tex` file contains all the variables for handing in an academic term paper, as well as setups for custom titlepage, anti-plagiarism declaration, works cited etc. From within `config.tex`, the `mylilypond` command and everything in the `mylilypond.sty` can be enabled under the ‘Lilypond support’ header.
+The `config.tex` file contains all the variables for handing in an academic term paper, as well as setups for custom titlepage, anti-plagiarism declaration, works cited etc. From within `config.tex`, the `mylilypond` command and everything in the `mylilypond.sty`-file can be enabled under the ‘Lilypond support’ header.
 
 `main.tex` is just some boilerplate TeX, calling all the other files and expecting content in a folder named **content**
 
