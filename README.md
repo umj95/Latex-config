@@ -76,7 +76,7 @@ All packages are loaded via `custom-style.sty`, unless they require user input, 
 ### In `mylilypond.sty`
 - lyluatex
 
-make sure they exist on Debian-based Distros with the following command: `sudo apt install fontspec tgcursor ebgaramond nth microtype setspace geometry changepage graphicx  hyperref cleveref babel csquotes biblatex`
+make sure they exist on Debian-based Distros with the following command: `sudo apt install fontspec tgcursor ebgaramond nth microtype setspace geometry changepage graphicx  hyperref cleveref babel csquotes texlive-biblatex-extra`
 
 ## Sample Project
 
