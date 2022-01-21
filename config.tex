@@ -11,40 +11,40 @@
 %%%%%Variables%%%%%
 %%%%%%%%%%%%%%%%%%%
     % Personal Info
-    \author{} %Name
-    \newcommand{\authormail}{} %Email
-    \newcommand{\matrikelnr}{} %student number
-    \newcommand{\authoraddress}{} %address
+    \author{}			%Name
+    \def\authormail{} 		%Email
+    \def\matrikelnr{} 		%student number
+    \def\authoraddress{} 	%address
 
     % Department & Correction Info -- These should be self explanatory
-    \newcommand{\city}{}
-    \newcommand{\university}{}
-    \newcommand{\faculty}{}
-    \newcommand{\department}{}
-    \newcommand{\handindate}{}
+    \def\city{}
+    \def\university{}
+    \def\faculty{}
+    \def\department{}
+    \def\handindate{}
 
-    \newcommand{\tutor}{}
-    \newcommand{\coursetype}{}
-    \newcommand{\coursetitle}{}
-    \newcommand{\coursenumber}{}
+    \def\tutor{}
+    \def\coursetype{}
+    \def\coursetitle{}
+    \def\coursenumber{}
 
     % Paper Info
     \title{} %title of the paper
     \date{\today}
-    \newcommand{\papertype}{} %form of the paper (term paper, Proseminararbeit, etc)
-    \newcommand{\keywords}{}
+    \def\papertype{} %form of the paper (term paper, Proseminararbeit, etc)
+    \def\keywords{}
 
     % input encoding & language
-    \newcommand{\mainlanguage}{ngerman} %Uncomment if main language is German
-    %\newcommand{\mainlanguage}{UKenglish}
-    \usepackage[british, ngerman]{babel}
+    \def\mainlanguage{UKenglish}
+    \def\metalanguage{ngerman}
+    \usepackage[\metalanguage, \mainlanguage]{babel}
 %
 % Literature & Bibliography Resources
 %
 \usepackage[babel]{csquotes}
 
 \usepackage[style=mla,
-            guessmedium=true,
+            guessmedium=false,
             mancitepar=true,
             backend=biber]{biblatex}
     \addbibresource{} %.bib-file for literature
@@ -72,34 +72,34 @@
 
             \begin{center}
                 %change according to language of institution
-                \selectlanguage{ngerman}
+                \selectlanguage{\metalanguage}
 
-                \large{\university\\}
-                \large{\faculty\\}
-                \large{\department\\}
+                \ifx\university\@empty\else\large{\university\\}\fi
+                \ifx\faculty\@empty\large{\faculty\\}\fi
+                \ifx\department\@empty\large{\department\\}\fi
                 
                 \vspace*{6em}
 
                 %uncomment if title is not German
-                %\foreignlanguage{\mainlanguage}{
+                \foreignlanguage{\mainlanguage}{
                     \Huge{\textsc{\@title}}
-                %}
+                }
 
                 \vspace*{3em}
 
-                \Large{\papertype\\ \vspace{2em}}
-                \Large{Eingereicht bei \tutor\\ \vspace*{1.5em}}
-                \large{Abgegeben am \handindate\\}
+                \ifx\papertype\@empty\else\Large{\papertype\\ \vspace{2em}}\fi
+                \ifx\tutor\@empty\else\Large{Eingereicht bei \tutor\\ \vspace*{1.5em}}\fi
+                \ifx\handindate\@empty\else\large{Abgegeben am \handindate\\}\fi
 
             \end{center}
 
             \vfill
 
             \begin{flushleft}
-            \@author\\
-            \href{mailto:\authormail}{\texttt{\authormail}}\\
-            {Matrikelnummer: \matrikelnr\\}
-            \authoraddress\\
+	            \@author\\
+	            \ifx\authormail\@empty\else\href{mailto:\authormail}{\texttt{\authormail}}\\\fi
+	            \ifx\matrikelnr\@empty\else Matrikelnummer: \matrikelnr\\\fi
+	            \ifx\authoraddress\@empty\else\authoraddress\fi
             \end{flushleft}
 
             \selectlanguage{\mainlanguage}
@@ -112,13 +112,14 @@
 %%%%%%%%%%%%%%%%%%Simple Title%%%%%%%%%%%%%%%%%%
 \makeatletter
     \newcommand\mymaketitle{
-        \selectlanguage{ngerman}
+        \selectlanguage{\metalanguage}
         \begin{flushleft}
             \@author\\
-            \coursetype~\emph{\coursetitle}\\
-            Kursnummer: \coursenumber\\
-            \tutor\\
-            \handindate
+            \ifx\coursetype\@empty\else\coursetitle~\fi
+            \ifx\coursetitle\@empty\else\emph{\coursetitle}\\\fi
+            \ifx\coursenumber\@empty\else Kursnummer: \coursenumber\\\fi
+            \ifx\tutor\@empty\else\tutor\\\fi
+            \ifx\handindate\@empty\else\handindate\fi
         \end{flushleft}
 
         \begin{center}
@@ -152,7 +153,7 @@
     \newcommand{\plagiat}{
         \newpage
 
-        %\selectlanguage{ngerman}
+        \selectlanguage{\metalanguage}
         \thispagestyle{empty}
 
         \section*{Plagiatserklärung}
@@ -161,6 +162,6 @@
 
         \vspace*{65pt}
 
-        \noindent\city , den \handindate \hfill \@author
+        \noindent\ifx\city\@empty\else{\city , den }\fi\ifx\handindate\@empty\else\handindate\fi \hfill \@author
     }
 \makeatother

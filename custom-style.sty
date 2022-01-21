@@ -11,10 +11,18 @@
 
 \usepackage{tgcursor}
 
-\usepackage{ebgaramond}
+\usepackage{sourceserifpro}
+\usepackage{sourcesanspro}
+\usepackage{sourcecodepro}
+
+%\setmainfont{sourceserifpro}
+\addtokomafont{disposition}{\sourcesanspro}
+\addtokomafont{disposition}{\mdseries}
+
+%\usepackage{ebgaramond}
 
 %EB Garamond Setup
-\setmainfont{EB Garamond}[RawFeature={
+%\setmainfont{EB Garamond}[RawFeature={
 %%% Caps, Sub- & Superscript %%%
 %+smcp,      %SC
 %+c2sc,     %Captials to SC
@@ -26,26 +34,26 @@
 %+case,      %Case-Sensitive Forms of diacritical signs, dashes etc
 %%% Figures %%%
 %lnum,       %Lining figures
-+onum,      %Oldstyle figures
+%+onum,      %Oldstyle figures ++++
 %+tnum,      %Tabular Figures
-+pnum,     %Proportional figures
+%+pnum,     %Proportional figures ++++
 %%% Ligatures %%%
-+calt,      %Contextual Alternates (Swashy Q, non-colliding f)
-+liga,     %Standard Ligatures
-+clig,     %Contextual Ligatures (italic final s)
+%+calt,      %Contextual Alternates (Swashy Q, non-colliding f) +++++
+%+liga,     %Standard Ligatures +++++
+%+clig,     %Contextual Ligatures (italic final s)
 %+hlig,      %Historical Ligatures (sp st ct)
 %+dlig,     %Discretionary Ligatures (Th)
 %+swsh,      %Swash Italics
 %+salt,      %Stylistic Alternates (ɵ)
 %+ccmp,      %Glyph Composition / Decomposition
 %+locl,      %Localized forms according to language settings
-+kern,      %Kerning
+%+kern,      %Kerning +++++
 %%% Character Variants %%%
 %+cv01,      %Character Variant 01 (s->ſ)
 %+cv02,      %Character Variant 02 (@)
 %+cv03,      %Character Variant 03 (J->I)
 %+cv06,      %Character Variant 06 (« ‹ › »)
-+cv11      %Character Variant 11 (new 1)
+%+cv11      %Character Variant 11 (new 1) ++++
 %+cv21,      %Character Variant 02 (new a)
 %+cv47,      %Character Variant 47 (ß <-> ss)
 %+cv82,      %Character Variant 82 (Alternate comma-shaped caron after d, l and t)
@@ -58,11 +66,11 @@
 %+ss05,      %Stylistic Set 05 (apostrophe over next letter if no ascender)
 %+ss06,      %Stylistic Set 06 (IPA friendly β θ λ χ)
 %+ss07,      %Stylistic Set 07 (alternate h & k with diacritical signs)
-    }
-]
+%    }
+%]
 \usepackage[super]{nth}				% enumerations
 
-\setkomafont{disposition}{\scshape} % make headings sc
+%\setkomafont{disposition}{\scshape} % make headings sc
 %
 % environments
 %
